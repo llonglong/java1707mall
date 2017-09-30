@@ -46,4 +46,10 @@ public class ProductServiceImpl implements IProductService{
 	public void update(Product product) {
 		productDao.update(product);
 	}
+
+
+	@Override
+	public void deleteByAll(int[] idArray) {
+		productDao.deleteByAll(idArray);
+	}
 }

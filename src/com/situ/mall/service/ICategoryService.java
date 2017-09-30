@@ -10,6 +10,23 @@ public interface ICategoryService {
 
 	List<Category> findParentCategory();
 
-	List<Category> findPCategory(int parentId);
+	List<Category> findCategory(int id);
 
+	void deleteCategoryById(int id);
+
+	void addParentCategory(Category category);
+
+	void addCategory(Category category);
+
+	void deleteParentById(int id);
+
+	Category findParentById(int id);
+
+	void updateParent(Category category);
+
+	Category findCategoryById(int id);
+
+	void updateCategory(Category category);
+
+	
 }

@@ -8,12 +8,26 @@ public interface CategoryDao {
 
 	List<Category> findAll();
 
-	
-
 	List<Category> findParentCategory();
 
+	List<Category> findCategory(int id);
 
+	void deleteCategoryById(int id);
 
-	List<Category> findPCategory(int parentId);
+	void addParentCategory(Category category);
+
+	void addCategory(Category category);
+
+	void deleteParentById(int id);
+
+	Category findParentById(int id);
+
+	void updateParent(Category category);
+
+	Category findCategoryById(int id);
+
+	void updateCategory(Category category);
+
+	
 
 }

@@ -9,15 +9,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
-<!-- <script type="text/javascript">
-	function goPage(pageIndex) {
+<script type="text/javascript">
+	/* function goPage(pageIndex) {
 		$('#pageIndex').val(pageIndex);
 		$('#searchForm').submit();
 	}
 	(function() {
 		$("#gender option[value='${searchCondition.gender}']").prop("selected",
 				true);
-	});
+	}); */
 	function selectAlls() {
 		$("input[name=selectIds]").prop("checked",
 				$("#selectAll").is(":checked"));
@@ -28,11 +28,11 @@
 			//要删除
 			$("#mainForm")
 					.attr("action",
-							"${pageContext.request.contextPath}/students?method=deleteAll");
+							"${pageContext.request.contextPath}/product/deleteAll.action");
 			$("#mainForm").submit();
 		}
 	}
-</script> -->
+</script>
 </head>
 <body>
 
@@ -97,9 +97,12 @@
 
 					</ul>
 					
-
+				<form action="${pageContext.request.contextPath}/product/deleteAll.action" method="post" id="mainForm">
+					<input type="submit" value="批量删除" onclick="deleteAll"/>
+					<!-- <input type="submit" value="批量上架" onclick="updateAll"/> -->
 					<table class="table container">
 						<tr>
+							<td><input type="checkbox" id="selectAll" onclick="selectAlls()"/></td>
 							<td>商品id</td>
 							<td>分类id</td>
 							<td>商品名称</td>
@@ -115,7 +118,7 @@
 						</tr>
 						<c:forEach items="${list}" var="product">
 							<tr>
-
+								<td><input type="checkbox" name="selectIds" value="${product.id}"/></td>
 								<td>${product.id}</td>
 								<td>${product.categoryId}</td>
 								<td>${product.name}</td>
@@ -134,6 +137,7 @@
 							</tr>
 						</c:forEach>
 					</table>
+				</form>
 				</div>
 				<!-- 分页开始 -->
 				<nav aria-label="Page navigation">

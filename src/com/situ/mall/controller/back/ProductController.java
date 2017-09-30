@@ -39,6 +39,16 @@ public class ProductController {
 		return "redirect:/product/findAll.action";
 	}
 	
+	@RequestMapping(value="deleteAll")
+	public String deleteAll(int[] selectIds) {
+		for (int i : selectIds) {
+			System.out.println(i);
+			productService.deleteById(i);
+		}
+		
+		return "redirect:/product/findAll.action";
+	}
+	
 	@RequestMapping(value="findById")
 	public String findById(Model model,int id) {
 		Product product = productService.findById(id);
@@ -57,7 +67,6 @@ public class ProductController {
 	@RequestMapping(value="add")
 	public String add(Product product) {
 		productService.add(product);
-		
 		return "redirect:/product/findAll.action";
 	}
 	

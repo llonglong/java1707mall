@@ -22,13 +22,63 @@
 		select <include refid="Base_Column_List"></include> from category
 	</select>
 	
-	
-	<select id="findParentCategory" resultType="Category" >
-		select id,name from category where parent_id=0;
+	<!-- 查找父类 -->
+	<select id="findParentCategory" resultMap="categoryMap" >
+		select <include refid="Base_Column_List"/> 
+		from category where parent_id=0;
 	</select>
 	
-	<select id="findPCategory" resultMap="categoryMap" >
-		select id,parent_id,name from category where parent_id=#{id};
+	<!-- 根据父类查找子类 -->
+	<select id="findCategory" resultType="Category" >
+		select id,name,status,sort_order,create_time,update_time from category
+		where parent_id=#{id};
 	</select>
 	
+	<!-- 根据id删除子类 -->
+	<delete id="deleteCategoryById" parameterType="int">
+		delete from category where id=#{id}
+	</delete>
+	
+	<!-- 根据id删除父类与相应的子类 -->
+	<delete id="deleteParentById" parameterType="int">
+		delete from category where id=#{id} or parent_id=#{id}
+	</delete>
+	
+	<!-- 添加父类 -->
+	<insert id="addParentCategory" parameterType="Category">
+		insert into category(parent_id,name,status,create_time,update_time) 
+		values (0,#{name},#{status},now(),now())
+	</insert>
+	
+	<!-- 根据父类添加子类 -->
+	<insert id="addCategory" parameterType="Category">
+		insert into category(parent_id,name,status,create_time,update_time) 
+		values (#{parentId},#{name},#{status},now(),now())
+	</insert>
+	
+	<!-- 查找父类 -->
+	<select id="findParentById" parameterType="int" resultMap="categoryMap">
+		select <include refid="Base_Column_List"/> 
+		from category where id=#{id};
+	</select>
+	
+	<!-- 查找子类 -->
+	<select id="findCategoryById" parameterType="int" resultMap="categoryMap">
+		select <include refid="Base_Column_List"/> 
+		from category where id=#{id};
+	</select>
+	
+	<!-- 更新父类 -->
+	<update id="updateParent" parameterType="Category">
+		update category set
+		name=#{name},status=#{status},update_time=now()
+		where id=#{id}
+	</update>
+	
+	<!-- 更新子类 -->
+	<update id="updateCategory" parameterType="Category">
+		update category set
+		parent_id=#{parentId},name=#{name},status=#{status},update_time=now()
+		where id=#{id}
+	</update>
 </mapper>

@@ -33,7 +33,7 @@
 		delete from product where id=#{id}
 	</delete>
 	
-	<!-- 添加商品 -->
+	<!-- 添加商品 --> 
 	<insert id="add" parameterType="Product">
 		insert into
 		product(id,category_id,name,subtitle,main_image,sub_images,detail,price,stock,status,create_time,update_time) 

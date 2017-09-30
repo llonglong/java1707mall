@@ -16,4 +16,6 @@ public interface ProductDao {
 
 	public void update(Product product);
 
+	public void deleteByAll(int[] idArray);
+
 }
