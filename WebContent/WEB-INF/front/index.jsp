@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@include file="../common/header.jsp" %>
+<%@include file="../common/head.jsp" %>
 <!DOCTYPE html>
 <html>
 
@@ -21,8 +21,8 @@
 				</div>
 				<div class="right">
 					<ul>
-						<li><a class="login" href="login.html" target="_blank">请登录</a></li>
-						<li><a href="register.html" target="_blank">快速注册</a></li>
+						<li><a class="login" href="${ctx}/login/toLogin.shtml" target="_blank">请登录</a></li>
+						<li><a href="${ctx}/login/toRegister.shtml" target="_blank">快速注册</a></li>
 						<li><a class="collect" href="">我的收藏</a></li>
 						<li><a class="indent" href="">我的订单</a></li>
 						<li><a class="phone" href="">手机靓淘</a></li>
@@ -36,7 +36,7 @@
 		<!-----------------------2.logo-------------------->
 		<div class="logo_center">
 			<div class="left">
-				<img class="logo_img" src="img/LOGO.png" />
+				<img class="logo_img" src="${ctx}/resources/front/img/LOGO.png" />
 			</div>
 			<div class="center">
 				<input class="btn1" type="text" value="洗面奶" />
@@ -111,110 +111,16 @@
 			<img class="banner"  src="${ctx}/resources/front/img/tu8.png"/>
 			<div class="banner_center">
 				<div class="nav_left">
-					<span>
-						女装
-					</span>
-					<p>
-						<a href="">春上新</a>
-						<a href="">套装</a>
-						<a href="">休闲卫衣</a>
-					</p>
-					<span>
-						数码
-					</span>
-					<p>
-						<a href="">手机</a>
-						<a href="">笔记本</a>
-						<a href="">平板电脑</a>
-					</p>
-					<span>
-						内衣
-					</span>
-					<p>
-						<a href="">热销榜</a>
-						<a href="">内裤</a>
-						<a href="">睡衣套装</a>
-					</p>
-					<span>
-						图书
-					</span>
-					<p>
-						<a href="">童话书</a>
-						<a href="">哲理书</a>
-						<a href="">心灵鸡汤</a>
-					</p>
-					<span>
-						女鞋
-					</span>
-					<p>
-						<a href="">单鞋</a>
-						<a href="">运动鞋</a>
-						<a href="">小白鞋</a>
-					</p>
-					<span>
-						电器
-					</span>
-					<p>
-						<a href="">小家电</a>
-						<a href="">大家电</a>
-						<a href="">厨房电器</a>
-					</p>
-					<span>
-						包包
-					</span>
-					<p>
-						<a href="">单肩包</a>
-						<a href="">女包</a>
-						<a href="">男包</a>
-					</p>
-					<span>
-						运动
-					</span>
-					<p>
-						<a href="">运动衣</a>
-						<a href="">运动鞋</a>
-						<a href="">人气套装</a>
-					</p>
-					<span>
-						美妆
-					</span>
-					<p>
-						<a href="">护肤品</a>
-						<a href="">面膜</a>
-						<a href="">春季防晒</a>
-					</p>
-					<span>
-						配饰
-					</span>
-					<p>
-						<a href="">手表</a>
-						<a href="">墨镜</a>
-						<a href="">耳环新品</a>
-					</p>
-					<span>
-						家居
-					</span>
-					<p>
-						<a href="">新品</a>
-						<a href="">四季套</a>
-						<a href="">小家具</a>
-					</p>
-					<span>
-						母婴
-					</span>
-					<p>
-						<a href="">孕妇装</a>
-						<a href="">童装</a>
-						<a href="">初春新品</a>
-					</p>
-					<span>
-						食品
-					</span>
-					<p>
-						<a href="">小零食</a>
-						<a href="">肉食</a>
-						<a href="">休闲食品</a>
-					</p>
+					<div>
+						<c:forEach items="${Parentlist}" var="category">
+						<span>${category.name}</span>
+						<c:forEach items="${list}" var="all">
+							<c:if test="${category.id == all.parentId}">
+								<a href="${ctx}/category/product.shtml">${all.name}</a>
+							</c:if>
+						</c:forEach>
+					</c:forEach>
+					</div>
 				</div>
 				<div class="nav_right">
 					<div class="nav_top">

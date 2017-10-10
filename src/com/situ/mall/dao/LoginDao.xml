@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.situ.mall.dao.LoginDao">
+	<resultMap type="User" id="userMap">
+		<id property="id" column="id"/>
+		<result property="username" column="username"/>
+		<result property="password" column="password" />
+		<result property="email" column="email" />
+		<result property="phone" column="phone" />
+		<result property="question" column="question" />
+		<result property="answer" column="answer" />
+		<result property="role" column="role" />
+		<result property="createTime" column="create_time" />
+		<result property="updateTime" column="update_time" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		id,username,password,email,phone,question,answer,role,
+		create_time,update_time
+	</sql>
+	<!-- 查找所有用户 -->
+	<select id="findAll" resultMap="userMap">
+		select <include refid="Base_Column_List"></include> from user
+	</select>
+	
+	<select id="getUser" resultType="User" parameterType="User">
+		select username,password from user where username=#{username} 
+		and password=#{password}
+	</select>
+	<!-- 根据id删除指定商品 -->
+	<!-- <delete id="deleteById" parameterType="int">
+		delete from product where id=#{id}
+	</delete> -->
+	
+	<!-- 添加商品 --> 
+	<!-- <insert id="add" parameterType="Product">
+		insert into
+		product(id,category_id,name,subtitle,main_image,sub_images,detail,price,stock,status,create_time,update_time) 
+		values (id,#{categoryId},#{name},#{subtitle},#{mainImage},#{subImages},#{detail},#{price},#{stock},#{status},now(),now())
+	</insert> -->
+	
+	<!-- 根据id查找商品 -->
+	<!-- <select id="findById" parameterType="int" resultMap="productMap">
+		SELECT<include refid="Base_Column_List"></include> from product
+        WHERE id=#{id};
+	</select> -->
+	
+	<!-- 修改商品信息 -->
+	<!-- <update id="update" parameterType="Product">
+		update product set 
+		category_id=#{categoryId},name=#{name},subtitle=#{subtitle},price=#{price},
+		stock=#{stock},status=#{status},update_time=now()
+		where id=#{id}
+	</update> -->
+	
+</mapper>

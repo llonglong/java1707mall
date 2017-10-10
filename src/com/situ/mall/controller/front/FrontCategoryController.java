@@ -1,4 +1,4 @@
-package com.situ.mall.controller.back;
+package com.situ.mall.controller.front;
 
 import java.util.List;
 
@@ -10,57 +10,55 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.situ.mall.pojo.Category;
-import com.situ.mall.pojo.Product;
 import com.situ.mall.service.ICategoryService;
 
 @Controller
 @RequestMapping(value="category")
-public class CategoryController {
+public class FrontCategoryController {
 
 	@Resource(name="categoryService")
 	private ICategoryService categoryService;
 	
 	
-	/*@RequestMapping(value="findAll")
+	@RequestMapping(value="findAll.shtml")
 	public String findAll(Model model) {
 		List<Category> list = categoryService.findAll();
 		model.addAttribute("list",list);
 		for (Category category : list) {
 			System.out.println(category);
 		}
-		return "category_list";
-	}*/
-	@RequestMapping(value="parenCategoryList")
-	@ResponseBody
-	public List<Category> parenCategoryList() {
-		List<Category> list = categoryService.findParentCategory();
-		return list; 
-	}
-	@RequestMapping(value="categoryList")
-	@ResponseBody
-	public List<Category> categoryList(int parentId) {
-		List<Category> list =  categoryService.findCategory(parentId);
-		return list;
+		return "index";
 	}
 		
-	@RequestMapping("/findParentCategory")
+	@RequestMapping("/findParentCategory.shtml")
     public  String findParentCategory(Model model) {
 		List<Category> Parentlist = categoryService.findParentCategory();
 		model.addAttribute("Parentlist",Parentlist);
 		for (Category category : Parentlist) {
 			System.out.println(category);
 		}
-		return "category_list";
+		List<Category> list = categoryService.findAll();
+		model.addAttribute("list",list);
+		for (Category category : list) {
+			System.out.println(category);
+		}
+		return "index";
     }
 	
-	@RequestMapping("/findCategory")
+	@RequestMapping("/product.shtml")
+	public String product(){
+		return "product";
+		
+	}
+	
+	/*@RequestMapping("/findCategory")
     public  String findCategory(Model model,int id) {
         List<Category> list = categoryService.findCategory(id);
         model.addAttribute("list",list);
         for (Category category : list) {
 			System.out.println(category);
 		}
-        return "show_category";
+        return "index";
     }
 	
 	@RequestMapping("/deleteCategoryById")
@@ -71,7 +69,7 @@ public class CategoryController {
 	
 	@RequestMapping("/deleteParentById")
     public  String deleteParentById(int id) {
-        /*categoryService.deleteCategoryById(id);*/
+        categoryService.deleteCategoryById(id);
         categoryService.deleteParentById(id);
         return "redirect:/category/findParentCategory.action";
     }
@@ -93,7 +91,7 @@ public class CategoryController {
 		System.out.println(category);
 		categoryService.addParentCategory(category);
 		return "redirect:/category/findParentCategory.action";
-		/*return "addParentCategory_list";*/
+		return "addParentCategory_list";
 	}
 	
 	@RequestMapping(value="addCategory")
@@ -101,7 +99,7 @@ public class CategoryController {
 		System.out.println(category);
 		categoryService.addCategory(category);
 		return "redirect:/category/findParentCategory.action";
-		/*return "addParentCategory_list";*/
+		return "addParentCategory_list";
 	}
 	
 	@RequestMapping(value="findParentById")
@@ -130,5 +128,5 @@ public class CategoryController {
 	public String updateCategory(Category category) {
 		categoryService.updateCategory(category);
 		return "redirect:/category/findParentCategory.action";	
-	}
+	}*/
 }
