@@ -8,7 +8,7 @@ public interface LoginDao {
 
 	public List<User> findAll();
 
-	public User getUser();
+	public User getUser(User user);
 
 	
 }

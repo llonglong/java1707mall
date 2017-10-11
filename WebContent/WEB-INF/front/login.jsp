@@ -45,7 +45,7 @@
 							</li>
 							<li>
 								<input class="login_user" name="username" type="text" placeholder="会员名/邮箱/手机号" />
-								<input class="login_password" name="password" type="text" placeholder="密码" />
+								<input class="login_password" name="password" type="password" placeholder="密码" />
 								<input class="login_btn" type="submit" value="登录" />
 							</li>
 							<li class="login_select">

@@ -116,7 +116,7 @@
 						<span>${category.name}</span>
 						<c:forEach items="${list}" var="all">
 							<c:if test="${category.id == all.parentId}">
-								<a href="${ctx}/category/product.shtml">${all.name}</a>
+								<a href="${ctx}/product//product_list.shtml?id=100012">${all.name}</a>
 							</c:if>
 						</c:forEach>
 					</c:forEach>

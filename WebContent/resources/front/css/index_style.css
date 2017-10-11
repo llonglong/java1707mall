@@ -3,7 +3,7 @@
 		}
 		
 		* {
-			font-family: "微软雅黑";
+			font-family: "寰蒋闆呴粦";
 			font-size: 14px;
 		}
 		
@@ -120,7 +120,7 @@
 			margin-top: 27px;
 			margin-bottom: 27px;
 		}
-		/*设置中间框的*/
+		/*璁剧疆涓棿妗嗙殑*/
 		
 		.logo_center .center {
 			height: 74px;
@@ -128,12 +128,12 @@
 			margin-top: 26px;
 			margin-left: 180px;
 		}
-		/*设置input标签为左浮动*/
+		/*璁剧疆input鏍囩涓哄乏娴姩*/
 		
 		.logo_center input {
 			float: left;
 		}
-		/*设置搜索框的宽高，边框 以及左浮动*/
+		/*璁剧疆鎼滅储妗嗙殑瀹介珮锛岃竟妗� 浠ュ強宸︽诞鍔�*/
 		
 		.logo_center .btn1 {
 			width: 400px;
@@ -141,7 +141,7 @@
 			border: 2px solid #f41443;
 			float: left;
 		}
-		/*设置搜索按钮的宽高，颜色，背景以及左浮动*/
+		/*璁剧疆鎼滅储鎸夐挳鐨勫楂橈紝棰滆壊锛岃儗鏅互鍙婂乏娴姩*/
 		
 		.logo_center .btn2 {
 			width: 100px;
@@ -150,20 +150,20 @@
 			background: #F41443;
 			float: left;
 		}
-		/*中间下方链接ul浮动属性和消除上面搜索框和按钮的左浮动的影响，距离上面的搜索框3px*/
+		/*涓棿涓嬫柟閾炬帴ul娴姩灞炴�у拰娑堥櫎涓婇潰鎼滅储妗嗗拰鎸夐挳鐨勫乏娴姩鐨勫奖鍝嶏紝璺濈涓婇潰鐨勬悳绱㈡3px*/
 		
 		.logo_center .nav {
 			float: left;
 			clear: left;
 			margin-top: 3px;
 		}
-		/*中间下方链接li的左浮动和距离左边4px*/
+		/*涓棿涓嬫柟閾炬帴li鐨勫乏娴姩鍜岃窛绂诲乏杈�4px*/
 		
 		.logo_center li {
 			float: left;
 			margin-left: 4px;
 		}
-		/*中间下面链接的颜色设置*/
+		/*涓棿涓嬮潰閾炬帴鐨勯鑹茶缃�*/
 		
 		.logo_center a {
 			color: #808080;
@@ -257,8 +257,8 @@
 		img {
 			display: block;
 		}
-		/*解决通屏banner图适应不同浏览器分辨率问题
-			 保证的图片中心区域在浏览器中显示中心内容*/
+		/*瑙ｅ喅閫氬睆banner鍥鹃�傚簲涓嶅悓娴忚鍣ㄥ垎杈ㄧ巼闂
+			 淇濊瘉鐨勫浘鐗囦腑蹇冨尯鍩熷湪娴忚鍣ㄤ腑鏄剧ず涓績鍐呭*/
 		
 		.banner_box {
 			position: relative;
@@ -295,7 +295,7 @@
 		
 		.nav_left span {
 			font-size: 16px;
-			font-weight: 900;
+			font-weight: 700;
 			padding-left: 15px;
 			color: #333333;
 		}
@@ -307,14 +307,15 @@
 		.nav_left a {
 			color: #666;
 			float: left;
-			margin-left: 5px;
-			margin-right: 5px;
+			font-size: 16px;
+			margin-left: 20px;
+			margin-right: 20px;
 		}
 		
 		.nav_left a:hover {
 			color: #F41443;
 		}
-		/*设置ul的高度，定位的方式，向左50%，外边框-150px 自下往上40px */
+		/*璁剧疆ul鐨勯珮搴︼紝瀹氫綅鐨勬柟寮忥紝鍚戝乏50%锛屽杈规-150px 鑷笅寰�涓�40px */
 		.banner_box .circle {
 			height: 20px;
 			position: absolute;
@@ -322,7 +323,7 @@
 			margin-left: -150px;
 			bottom: 40px;
 		}
-		/*设置li 里面的圆圈，圆圈的背景 浮动的选择 左右的距离*/
+		/*璁剧疆li 閲岄潰鐨勫渾鍦堬紝鍦嗗湀鐨勮儗鏅� 娴姩鐨勯�夋嫨 宸﹀彸鐨勮窛绂�*/
 		.circle li{
 			width: 20px;
 			height: 20px;
@@ -353,7 +354,7 @@
 		}
 		.nav_top{
 			margin-bottom:20px ;
-			/*父级的padding 就是子级的margin*/
+			/*鐖剁骇鐨刾adding 灏辨槸瀛愮骇鐨刴argin*/
 		}
 		.nav_top img{
 			margin-left: 38px;
@@ -477,7 +478,7 @@
 			margin-top: 66px;
 		}
 		
-		/*------------------抢购区-----------------------------*/
+		/*------------------鎶㈣喘鍖�-----------------------------*/
 		.panic_Buying{
 			margin-top: 25px;
 			margin-bottom: 25px;
@@ -571,7 +572,7 @@
 			background-position: center 90%;
 			margin-left: 7px;
 		}
-/*------------------------------红人--------------------------------------*/		
+/*------------------------------绾汉--------------------------------------*/		
 		.person_demo {
 			width: 1100px;
 			margin: auto;
@@ -650,7 +651,7 @@
 			margin-left: 25px;*/
 			
 		}
-		/*------------------------衣服--------------------------------------*/
+		/*------------------------琛ｆ湇--------------------------------------*/
 		.cloth {
 			width: 1100px;
 			margin: 0 auto;

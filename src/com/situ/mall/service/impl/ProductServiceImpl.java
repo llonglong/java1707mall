@@ -52,4 +52,11 @@ public class ProductServiceImpl implements IProductService{
 	public void deleteByAll(int[] idArray) {
 		productDao.deleteByAll(idArray);
 	}
+
+
+	@Override
+	public List<Product> findCategoryListById(Integer id) {
+		// TODO Auto-generated method stub
+		return productDao.findCategoryListById(id);
+	}
 }

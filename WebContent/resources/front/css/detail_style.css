@@ -288,6 +288,7 @@ input {
 .right_1 .title {
 	margin-top: 3px;
 	margin-bottom: 8px;
+	width:705px;
 	font-size: 18px;
 	font-weight: 600;
 	font-family: "黑体";
@@ -902,8 +903,9 @@ input {
 }
 .right_big .big_img{
 	float: right;
-	margin-top: 40px;
-	margin-right: 174px;
+	width:700px; 
+	margin-top: 20px;
+	margin-right: 200px;
 }
 .right_big_bottom{
 	float: right;

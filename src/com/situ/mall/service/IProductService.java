@@ -18,4 +18,6 @@ public interface IProductService {
 
 	public void deleteByAll(int[] idArray);
 
+	public List<Product> findCategoryListById(Integer id);
+
 }

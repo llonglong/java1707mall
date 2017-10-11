@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.situ.mall.constant.MallConstant;
 import com.situ.mall.util.JsonUtils;
 
 @Controller
@@ -32,8 +33,8 @@ public class UploadController {
 			//jpg,png
 			String ext = FilenameUtils.getExtension(pictureFile.getOriginalFilename());
 			String fileName = name + "." + ext;
-			String filePath1 = "E:\\pic\\" + fileName;
-			/*String filePath = MallConstant.SERVER_ADDRES + fileName;*/
+			String filePath1 = "E:\\pic\\"  + fileName;
+			String filePath = MallConstant.SERVER_ADDRES + fileName;
 			try {
 				pictureFile.transferTo(new File(filePath1));
 			} catch (IllegalStateException e) {
@@ -42,11 +43,11 @@ public class UploadController {
 				e.printStackTrace();
 			}
 			
-			//封装到map中返回
+			
 			Map result = new HashMap<>();
 			result.put("error", 0);
-			result.put("url", filePath1);
-			//将object转换成json
+			result.put("url", filePath);
+			
 			return JsonUtils.objectToJson(result);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -56,6 +57,7 @@ public class UploadController {
 			return JsonUtils.objectToJson(result);
 		}
 	}
+	
 	@RequestMapping(value="/uploadPic")
 	@ResponseBody
 	public Map<String, Object> uploadPic(MultipartFile pictureFile) {

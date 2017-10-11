@@ -3,6 +3,8 @@ package com.situ.mall.pojo;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.situ.mall.constant.MallConstant;
+
 public class Product {
 	private Integer id;
 	private Integer categoryId;
@@ -16,6 +18,10 @@ public class Product {
 	private Integer status;
 	private Date createTime;
 	private Date updateTime;
+	
+	public String getFullUrl(){
+		return MallConstant.SERVER_ADDRES + mainImage;
+	}
 	
 	public Product() {
 		super();

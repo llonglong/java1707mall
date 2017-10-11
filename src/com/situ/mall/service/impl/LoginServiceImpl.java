@@ -26,7 +26,7 @@ public class LoginServiceImpl implements ILoginService{
 	@Override
 	public User getUser(User user) {
 		// TODO Auto-generated method stub
-		return loginDao.getUser();
+		return loginDao.getUser(user);
 	}
 	
 	
