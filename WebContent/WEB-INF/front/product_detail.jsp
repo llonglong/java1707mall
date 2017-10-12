@@ -33,6 +33,10 @@
 					$("#num").val(num);
 				});
 			});
+			function addCart(productId){
+				var amount = $("#num").val();
+				window.location.href="${ctx}/cart/addCart.shtml?productId="+productId+"&amount="+amount;
+			}
 		</script>
 	</head>
 
@@ -321,7 +325,7 @@
 							</li>
 						</ul>
 						库存： ${product.stock}
-						<input class="right_bottom_addCar" type="button" value="加入购物车" />
+						<input class="right_bottom_addCar" type="button" onclick="addCart(${product.id})" value="加入购物车" />
 						<span class="right_txt_bottom">
 							温馨提示&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;·支持7天无理由退货
 						</span>
