@@ -9,6 +9,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -85,7 +86,7 @@ public class CartController {
 			Cookie cookie = new Cookie("buy_cart_cookies", stringWriter.toString());
 			//cookie的存活时间,默认关闭浏览器销毁
 			cookie.setMaxAge(60*60*24);
-			
+			cookie.setPath("/");
 			//将cookie发送给浏览器
 			response.addCookie(cookie);
 		}
@@ -115,9 +116,11 @@ public class CartController {
 		Cookie[] cookies = request.getCookies();
 		if (null != cookies && cookies.length > 0) {
 			for (Cookie cookie : cookies) {
+				System.out.println(cookie.getName());
 				if ("buy_cart_cookies".equals(cookie.getName())) {
 					//之前购物车中已经存在
 					//"{\"items\":[{\"product\":{\"id\":45},\"amount\":1}],\"productId\":45}"
+					System.out.println(cookie.getName());
 					String value = cookie.getValue();
 					try {
 						buyCartVO = objectMapper.readValue(value, BuyCartVO.class);
@@ -135,7 +138,6 @@ public class CartController {
 			product.setStock(productTemp.getStock());
 			CartItemVO cartItemVO = new CartItemVO();
 			cartItemVO.setProduct(product);
-			
 			buyCartVO.delItems(productId);
 			buyCartVO.setProductId(productId);
 			
@@ -150,6 +152,7 @@ public class CartController {
 			//将购物车json数据放到cookie里面
 			Cookie cookie = new Cookie("buy_cart_cookies", stringWriter.toString());
 			//cookie的存活时间,默认关闭浏览器销毁
+			cookie.setPath("/");
 			cookie.setMaxAge(60*60*24);
 			
 			//将cookie发送给浏览器

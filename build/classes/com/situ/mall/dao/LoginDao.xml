@@ -27,7 +27,8 @@
 	</select>
 	
 	<select id="getUser" resultType="User" parameterType="User">
-		select username,password from user where username=#{username} 
+		select <include refid="Base_Column_List"></include> 
+		from user where username=#{username} 
 		and password=#{password}
 	</select>
 	<!-- 根据id删除指定商品 -->

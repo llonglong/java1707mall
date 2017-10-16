@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.ObjectUtils.Null;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,7 +40,7 @@ public class LoginController {
 			if (user.getUsername().equals(resultUser.getUsername() ) && user.getPassword().equals(resultUser.getPassword())) {
 				HttpSession session = req.getSession();
 				session.setAttribute("user", user);
-				path =  "index";
+				path =  "redirect:/index.shtml";
 			} else {
 				path = "register";
 			}
@@ -59,4 +60,20 @@ public class LoginController {
 		boolean result = loginService.addUser(user);
 		return "redirect:/login/toLogin.shtml";
 	}*/
+	
+	@RequestMapping(value="judgeLogin.shtml")
+	public String judgeLogin(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		if (session == null) {
+			return "login";
+		}
+		if(user == null) {
+			return "login";
+		}
+		else{
+			return "redirect:/order/prepareOrder.shtml";
+		}
+	}
+	
 }

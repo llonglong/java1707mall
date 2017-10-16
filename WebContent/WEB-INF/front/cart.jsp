@@ -9,30 +9,19 @@
 		<title>靓淘网_购物车</title>
 		<link rel="stylesheet" href="${ctx}/resources/front/css/cart_style.css" />
 		<script type="text/javascript">
-			/* $(function(){
-				//- 
-				$("#sub").click(function(){
-					var num = $("#num").val();
-					num--;
-					if(num == 0) {
-						//alert();
-						return;
-					}
-					//赋值
-					$("#num").val(num);
-				}); */
-				//+
 				function sub(parentId){
-					var num = $("#num").val();
+					var num = $("#num" + parentId).val();
 					num--;
 					if(num == 0){
+						alert("确定清处该商品")
+						location.href="${ctx}/cart/deleteCart.shtml?productId="+parentId;
 						return;
 					}
 					location.href="${ctx}/cart/addCart.shtml?productId="+parentId+"&amount="+-1;
 				}
 				
 				function add(parentId,stock){
-					var num = $("#num").val();
+					var num = $("#num" + parentId).val();
 					/* alert(stock); */
 					num++;
 					if(num > stock) {
@@ -174,7 +163,7 @@
 						</li>
 						<li class="num_select">
 							<input class="car_ul_btn1" type="button" onclick="sub(${cartItemVO.product.id})" id="sub" value="-" />
-							<input class="car_ul_text" type="text" placeholder="1" id="num" value="${cartItemVO.amount}" />
+							<input class="car_ul_text" type="text" placeholder="1" id="num${cartItemVO.product.id}" value="${cartItemVO.amount}" />
 							<input class="car_ul_btn2" type="button" onclick="add(${cartItemVO.product.id},${cartItemVO.product.stock})" id="add" value="+" />
 						</li>
 						<li class="money">
@@ -201,7 +190,7 @@
 					</li>
 					<li style="margin-left: 8px;margin-right: 265px;">全选</li>
 					<li style="margin-left: 250px;margin-right: 18px;">总金额（已免运费）：<span style="color: #F41443;">¥${buyCartVO.totalPrice}</span></li>
-					<li class="total_right"><a href="">立即结算</a></li>
+					<li class="total_right"><a href="${ctx}/login/judgeLogin.shtml">立即结算</a></li>
 				</ul>
 			</div>
 					<div class="sp">
