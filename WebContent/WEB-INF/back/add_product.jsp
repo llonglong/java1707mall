@@ -62,6 +62,40 @@
 			}
 		});
 	}
+	function submitForm() {
+		var options = {
+			url:"${ctx}/product/add.action",
+			type:"post",
+			dataType:"json",
+			data:$("#add-form").serialize(),
+			success:function(data){
+				/* if(data.status==0) {
+					alert(data.msg);
+				} else {
+					alert(data.msg);
+				} */
+				if(data.status==0){
+            		layer.confirm(
+           				'添加成功',
+           				{btn:['关闭','跳转到列表界面']},
+           				function(index){
+           					layer.close(index);
+           				},
+           				function(){
+           					window.location.href = "${ctx}/product/findAll.action";
+           				}
+           			);
+            	} else{
+            		layer.msg("添加失败");
+            	}
+			}
+		}
+		$.ajax(options)
+	}
+	
+	function clearForm() {
+		$("#add-form")[0].reset();
+	}
 
 </script>
 <body>
@@ -184,7 +218,8 @@
 				  			<label>商品描述</label>
 				  	 		<textarea style="width:900px;height:300px;visibility:hidden;" name="detail"></textarea>
 				  		</div>
-						<input class="btn btn-success btn-lg" type="submit" value="添加" />
+						<button type="button" class="btn btn-default" onclick="submitForm()">添加商品</button>
+				  		<button type="button" class="btn btn-default" onclick="clearForm()">清空表单</button>
 					</form>
 				</div>
 				

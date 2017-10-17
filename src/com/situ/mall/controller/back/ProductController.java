@@ -7,7 +7,9 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.situ.mall.common.ServerResponse;
 import com.situ.mall.pojo.Category;
 import com.situ.mall.pojo.Product;
 import com.situ.mall.service.ICategoryService;
@@ -65,9 +67,10 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="add")
-	public String add(Product product) {
-		productService.add(product);
-		return "redirect:/product/findAll.action";
+	@ResponseBody
+	public ServerResponse add(Product product) {
+		return productService.add(product);
+		/*return "redirect:/product/findAll.action";*/
 	}
 	
 	@RequestMapping(value="getTurn")

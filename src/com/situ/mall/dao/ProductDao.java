@@ -10,7 +10,7 @@ public interface ProductDao {
 
 	public void deleteById(int id);
 
-	public void add(Product product);
+	public int add(Product product);
 
 	public Product findById(int id);
 

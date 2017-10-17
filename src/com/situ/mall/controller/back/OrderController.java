@@ -1,4 +1,4 @@
-package com.situ.mall.controller.front;
+package com.situ.mall.controller.back;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -33,7 +33,7 @@ import com.situ.mall.vo.CartItemVO;
 
 @Controller
 @RequestMapping(value="order")
-public class FrontOrderController {
+public class OrderController {
 	
 	/*@Autowired
 	private IShippingService shippingService;*/
@@ -52,7 +52,7 @@ public class FrontOrderController {
 	@Resource(name="orderItemService")
 	private IOrderItemService orderItemService;
 	
-	@RequestMapping("/prepareOrder.shtml")
+	@RequestMapping("/prepareOrder")
     public String prepareOrder(Model model,HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 		User user = (User) session.getAttribute("user");
@@ -95,7 +95,7 @@ public class FrontOrderController {
 		return "order";
 	}
 	
-	@RequestMapping("/addOrder.shtml")
+	@RequestMapping("/addOrder")
 	public String addOrder(Model model,HttpServletRequest request,HttpServletResponse response){
 		Order order = new Order();
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");

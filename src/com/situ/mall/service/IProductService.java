@@ -2,6 +2,7 @@ package com.situ.mall.service;
 
 import java.util.List;
 
+import com.situ.mall.common.ServerResponse;
 import com.situ.mall.pojo.Product;
 
 public interface IProductService {
@@ -10,7 +11,7 @@ public interface IProductService {
 
 	public void deleteById(int id);
 
-	public void add(Product product);
+	ServerResponse add(Product product);
 
 	public Product findById(int id);
 
