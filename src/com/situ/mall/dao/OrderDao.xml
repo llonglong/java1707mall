@@ -35,13 +35,12 @@
 	</insert>
 	
 	<insert id="add" parameterType="Order">
-		insert into orders(id,order_no,user_id,status)
-		values(#{id},#{orderNo},#{userId},#{status})
+		insert into orders(id,order_no,user_id,status,shipping_id,payment)
+		values(#{id},#{orderNo},#{userId},#{status},#{shippingId},#{payment})
 	</insert>
 	
-	<select id="findByUserId" parameterType="int" resultMap="orderMap"> 
-		select user_id,order_no,product_id,product_name,
-		product_image,current_unit_price,quantity,total_price from order_item
-		where user_id = #{id}
+	<select id="findAll" resultMap="orderMap">
+		select id,order_no,user_id,shipping_id,status,payment
+	    from orders
 	</select>
 </mapper>

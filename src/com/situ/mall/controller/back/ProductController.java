@@ -66,7 +66,7 @@ public class ProductController {
 		
 	}
 	
-	@RequestMapping(value="add")
+	@RequestMapping(value="/add")
 	@ResponseBody
 	public ServerResponse add(Product product) {
 		return productService.add(product);

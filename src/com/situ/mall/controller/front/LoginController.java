@@ -10,7 +10,9 @@ import org.apache.commons.lang3.ObjectUtils.Null;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.situ.mall.common.ServerResponse;
 import com.situ.mall.pojo.User;
 import com.situ.mall.service.ILoginService;
 
@@ -33,21 +35,22 @@ public class LoginController {
 	
 	
 	@RequestMapping(value="/loginIndex.shtml")
-	public String login(Model model, HttpServletRequest req, User user) {
-		String path = null;
+	@ResponseBody
+	public ServerResponse login(Model model, HttpServletRequest req, User user) {
+		
 		User resultUser = loginService.getUser(user);
 		if (user != null && resultUser != null) {
 			if (user.getUsername().equals(resultUser.getUsername() ) && user.getPassword().equals(resultUser.getPassword())) {
 				HttpSession session = req.getSession();
 				session.setAttribute("user", user);
-				path =  "redirect:/index.shtml";
+				return ServerResponse.createSuccess("µÇÂ¼³É¹¦");
 			} else {
-				path = "register";
+				return ServerResponse.createError("µÇÂ¼Ê§°Ü");
 			}
 		} else {
-			path = "register";
+			return ServerResponse.createError("µÇÂ¼Ê§°Ü");
 		}
-		return path;
+		
 	}
 	
 	@RequestMapping(value="toRegister.shtml")

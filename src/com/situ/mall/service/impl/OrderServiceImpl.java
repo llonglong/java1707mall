@@ -33,4 +33,12 @@ public class OrderServiceImpl implements IOrderService{
 		return orderDao.findByUserId(id);
 	}
 
+	@Override
+	public List<Order> findAll() {
+		// TODO Auto-generated method stub
+		return orderDao.findAll();
+	}
+
+	
+
 }

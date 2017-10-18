@@ -1,5 +1,6 @@
 package com.situ.mall.service.impl;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -19,5 +20,13 @@ public class OrderItemServiceImpl implements IOrderItemService{
 		// TODO Auto-generated method stub
 		return orderItemDao.findByUserId(id);
 	}
+
+	@Override
+	public List<OrderItem> findOrderItemByOrderNO(BigInteger orderNo) {
+		// TODO Auto-generated method stub
+		return orderItemDao.findOrderItemByOrderNO(orderNo);
+	}
+
+
 
 }

@@ -28,4 +28,9 @@
 		select <include refid="Base_Column_List"></include> from order_item
 		where user_id = #{id}
 	</select>
+	
+	<select id="findOrderItemByOrderNO" parameterType="BigInteger" resultMap="orderItemMap">
+		select <include refid="Base_Column_List"></include> from order_item
+		where order_no = #{orderNo}
+	</select>
 </mapper>

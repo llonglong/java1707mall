@@ -109,11 +109,10 @@ public class FrontOrderController {
 		order.setUserId(userNew.getId());
 		Shipping shipping = shippingService.findByUserId(userNew.getId());
 		order.setShippingId(shipping.getId());
+		
 		Integer status = 10;
 		order.setStatus(status);
-		
-		boolean result = orderService.add(order);
-		
+
 		ObjectMapper objectMapper = new ObjectMapper();
 		//只有对象里面不是null的才转换
 		objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
@@ -154,18 +153,25 @@ public class FrontOrderController {
 			//商品总价
 			int totalPrice = product.getPrice().intValue() * item.getAmount();
 			orderItem.setTotalPrice(totalPrice);
-			
 			//商品数量
 			orderItem.setQuantity(item.getAmount());
+			
 			orderItem.setUserId(userNew.getId());
 			orderItem.setOrderNo(orderNo);
 			boolean resultItem = orderService.addOrderItem(orderItem);
 			System.out.println(orderItem);
 		}
+		
+		int payment = 0;
+		
 		List<OrderItem> list = orderItemService.findByUserId(userNew.getId());
 		for (OrderItem orderItemList : list) {
+			payment += orderItemList.getTotalPrice();
 			System.out.println(orderItemList);
+			System.out.println(payment);
 		}
+		order.setPayment(payment);
+		boolean result = orderService.add(order);
 		model.addAttribute("list",list);
 		model.addAttribute("order",order);
 		System.out.println(order);

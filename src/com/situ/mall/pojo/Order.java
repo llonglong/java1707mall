@@ -13,7 +13,7 @@ public class Order {
 
 	private Integer shippingId;
 
-	private BigDecimal payment;
+	private Integer payment;
 
 	private Integer paymentType;
 
@@ -39,7 +39,7 @@ public class Order {
 
 
 
-	public Order(Integer id, BigInteger orderNo, Integer userId, Integer shippingId, BigDecimal payment, Integer paymentType,
+	public Order(Integer id, BigInteger orderNo, Integer userId, Integer shippingId, Integer payment, Integer paymentType,
 			Integer postage, Integer status, Date paymentTime, Date sendTime, Date endTime, Date closeTime,
 			Date createTime, Date updateTime) {
 		super();
@@ -109,13 +109,13 @@ public class Order {
 
 
 
-	public BigDecimal getPayment() {
+	public Integer getPayment() {
 		return payment;
 	}
 
 
 
-	public void setPayment(BigDecimal payment) {
+	public void setPayment(Integer payment) {
 		this.payment = payment;
 	}
 

@@ -12,6 +12,7 @@
 <%@include file="../common/header.jsp"%>
 <script type="text/javascript" src="${ctx}/resources/thirdlib/jquery/jquery.form.js"></script>
 <link href="${ctx}/resources/thirdlib/kindeditor/themes/default/default.css" type="text/css" rel="stylesheet">
+
 <script type="text/javascript" charset="utf-8" src="${ctx}/resources/thirdlib/kindeditor/kindeditor-all-min.js"></script>
 <script type="text/javascript" charset="utf-8" src="${ctx}/resources/thirdlib/kindeditor/lang/zh_CN.js"></script>
 </head>
@@ -62,12 +63,14 @@
 			}
 		});
 	}
+	
+	
 	function submitForm() {
 		var options = {
-			url:"${ctx}/product/add.action",
+			url:"${pageContext.request.contextPath}/product/add.action",
 			type:"post",
 			dataType:"json",
-			data:$("#add-form").serialize(),
+			data:$("#form-add").serialize(),
 			success:function(data){
 				/* if(data.status==0) {
 					alert(data.msg);
@@ -82,7 +85,7 @@
            					layer.close(index);
            				},
            				function(){
-           					window.location.href = "${ctx}/product/findAll.action";
+           					window.location.href = "${pageContext.request.contextPath}/product/findAll.action";
            				}
            			);
             	} else{

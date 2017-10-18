@@ -13,4 +13,7 @@ public interface IOrderService {
 
 	List<OrderItem> findByUserId(Integer id);
 
+	List<Order> findAll();
+
+
 }

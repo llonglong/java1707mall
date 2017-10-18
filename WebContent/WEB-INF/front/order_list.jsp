@@ -179,7 +179,7 @@
 			</div>
 			<div class="fr pc-shop-fr">
 				<p>共有 <em class="red pc-shop-shu"></em> 款商品，总计（不含运费）</p>
-				<span>¥ 699.00</span>
+				<span>￥ ${order.payment}</span>
 				<a href="#">去付款</a>
 			</div>
 		</div>

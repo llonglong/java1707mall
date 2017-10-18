@@ -178,5 +178,21 @@ public class OrderController {
 
 		return "order_list";
 	}
+	
+	@RequestMapping("/findAllOrder")
+	public String findAllOrder(Model model){
+		List<Order>list = orderService.findAll();
+		System.out.println(list);
+		model.addAttribute("list",list);
+		return "order_list";
+	}
+	
+	@RequestMapping("/findOrderItemByOrderNO")
+	public String findOrderItemByOrderNO(BigInteger orderNo,Model model){
+		List<OrderItem> orderItemList = orderItemService.findOrderItemByOrderNO(orderNo);
+		System.out.println(orderItemList);
+		model.addAttribute("orderItemList",orderItemList);
+		return "orderItem_list";
+	}
 
 }
