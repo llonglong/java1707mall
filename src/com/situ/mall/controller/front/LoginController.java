@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.ObjectUtils.Null;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +21,7 @@ import com.situ.mall.service.ILoginService;
 @RequestMapping(value="/login")
 public class LoginController {
 	
-	@Resource(name="loginService")
+	@Autowired
 	private ILoginService loginService;
 	
 	@RequestMapping(value="/toLogin.shtml")

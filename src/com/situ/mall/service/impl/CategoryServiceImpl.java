@@ -4,16 +4,17 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.situ.mall.dao.CategoryDao;
 import com.situ.mall.pojo.Category;
 import com.situ.mall.service.ICategoryService;
 
-@Service("categoryService")
+@Service
 public class CategoryServiceImpl implements ICategoryService{
 
-	@Resource(name="categoryDao")
+	@Autowired
 	private CategoryDao categoryDao;
 
 	@Override

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,19 +38,19 @@ public class OrderController {
 	
 	/*@Autowired
 	private IShippingService shippingService;*/
-	@Resource(name="loginService")
+	@Autowired
 	private ILoginService loginService;
 	
-	@Resource(name="shippingService")
+	@Autowired
 	private IShippingService shippingService;
 	
-	@Resource(name="productService")
+	@Autowired
 	private IProductService productService;
 	
-	@Resource(name="orderService")
+	@Autowired
 	private IOrderService orderService;
 	
-	@Resource(name="orderItemService")
+	@Autowired
 	private IOrderItemService orderItemService;
 	
 	@RequestMapping("/prepareOrder")

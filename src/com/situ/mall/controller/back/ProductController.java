@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,10 +20,10 @@ import com.situ.mall.service.IProductService;
 @RequestMapping(value="product")
 public class ProductController {
 	
-	@Resource(name="productService")
+	@Autowired
 	private IProductService productService;
 	
-	@Resource(name="categoryService")
+	@Autowired
 	private ICategoryService categoryService;
 	
 	@RequestMapping(value="findAll")
@@ -83,4 +84,9 @@ public class ProductController {
 		return "add_product";
 	}
 	
+	@RequestMapping(value="show")
+	@ResponseBody
+	public ServerResponse show(Integer id){
+		return productService.show(id);
+	}
 }

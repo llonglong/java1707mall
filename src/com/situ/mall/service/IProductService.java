@@ -21,4 +21,6 @@ public interface IProductService {
 
 	public List<Product> findCategoryListById(Integer id);
 
+	public ServerResponse show(Integer id);
+
 }

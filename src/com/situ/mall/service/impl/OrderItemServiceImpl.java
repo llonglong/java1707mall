@@ -5,14 +5,15 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.situ.mall.dao.OrderItemDao;
 import com.situ.mall.pojo.OrderItem;
 import com.situ.mall.service.IOrderItemService;
-@Service("orderItemService")
+@Service
 public class OrderItemServiceImpl implements IOrderItemService{
-	@Resource(name="orderItemDao")
+	@Autowired
 	private OrderItemDao orderItemDao;
 
 	@Override

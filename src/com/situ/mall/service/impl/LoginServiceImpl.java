@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.situ.mall.dao.LoginDao;
@@ -11,10 +12,10 @@ import com.situ.mall.dao.ProductDao;
 import com.situ.mall.pojo.User;
 import com.situ.mall.service.ILoginService;
 
-@Service("loginService")
+@Service
 public class LoginServiceImpl implements ILoginService{
 
-	@Resource(name="loginDao")
+	@Autowired
 	private LoginDao loginDao;
 
 	@Override

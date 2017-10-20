@@ -2,15 +2,16 @@ package com.situ.mall.service.impl;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.situ.mall.dao.ShippingDao;
 import com.situ.mall.pojo.Shipping;
 import com.situ.mall.service.IShippingService;
-@Service("shippingService")
+@Service
 public class ShippingServiceImpl implements IShippingService{
 
-	@Resource(name="shippingDao")
+	@Autowired
 	private ShippingDao shippingDao;
 	
 	@Override

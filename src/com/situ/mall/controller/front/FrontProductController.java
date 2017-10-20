@@ -18,7 +18,7 @@ import com.situ.mall.service.IProductService;
 @RequestMapping(value="product")
 public class FrontProductController {
 	
-	@Resource(name="productService")
+	@Autowired
 	private IProductService productService;
 	
 	@RequestMapping("/product_list.shtml")

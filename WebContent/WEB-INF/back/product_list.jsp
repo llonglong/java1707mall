@@ -55,6 +55,7 @@
 						<td>更新时间</td>
 						<td>删除</td>
 						<td>修改</td>
+						<td>上架</td>
 					</tr>
 				<c:forEach items="${list}" var="product">
 						<tr class="gradeX">
@@ -78,6 +79,8 @@
 								href="${ctx}/product/deleteById.action?id=${product.id}">删除</a></td>
 							<td><a
 								href="${ctx}/product/findById.action?id=${product.id}">修改</a></td>
+							<td><a
+								href="${ctx}/product/show.action?id=${product.id}">上架</a></td>
 							</tr>
 						</c:forEach>
 					</table>
