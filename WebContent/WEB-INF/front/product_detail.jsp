@@ -49,12 +49,14 @@
 				</div>
 				<div class="right">
 					<ul>
-						<li>
-							<a class="login" href="login.html" target="_blank">请登录</a>
-						</li>
-						<li>
-							<a href="register.html" target="_blank">快速注册</a>
-						</li>
+						<c:if test="${empty user.username}">
+							<li><a  href="javascript:login()"   target="_blank">请登录</a></li>
+							<li><a href="register.html" target="_blank">快速注册</a></li>
+						</c:if>
+						<c:if test="${!empty user.username}">
+							<li><a  href="javascript:login()"   target="_blank">${user.username}</a></li>
+							<li><a href="register.html" target="_blank">注销</a></li>
+						</c:if>
 						<li>
 							<a class="collect" href="">我的收藏</a>
 						</li>

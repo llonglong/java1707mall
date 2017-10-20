@@ -108,8 +108,9 @@ public class FrontOrderController {
 		User userNew = loginService.getUser(user);
 		order.setUserId(userNew.getId());
 		Shipping shipping = shippingService.findByUserId(userNew.getId());
-		order.setShippingId(shipping.getId());
 		
+		order.setShippingId(shipping.getId());
+		model.addAttribute("shipping",shipping);
 		Integer status = 10;
 		order.setStatus(status);
 
@@ -183,6 +184,20 @@ public class FrontOrderController {
 		response.addCookie(cookie);
 
 		return "order_list";
+	}
+	
+	@RequestMapping("/findOrderByUserId.shtml")
+	public String findOrderByUserId(Model model,HttpServletRequest request){
+		HttpSession session = request.getSession(false);
+		User user = (User) session.getAttribute("user");
+		User userNew = loginService.getUser(user);
+		System.out.println(userNew);
+		List<Order> orderList = orderService.findByUserId(userNew.getId());
+		List<OrderItem> orderItemList = orderItemService.findByUserId(userNew.getId());
+		model.addAttribute("orderList",orderList);
+		model.addAttribute("orderItemList",orderItemList);
+		System.out.println(orderItemList);
+		return "allOrder";
 	}
 
 }

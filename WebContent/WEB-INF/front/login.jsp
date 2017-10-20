@@ -34,7 +34,7 @@
 			<img class="banner_img" src="${ctx}/resources/front/img/beijing.png" />
 			<div class="banner_center">
 				<div class="login">
-					<form action="${ctx}/login/loginIndex.shtml">
+					<form action="${ctx}/login/loginIndex2.shtml">
 						<ul>
 							<li class="login_title_1">
 								<a href="">密码登录</a>

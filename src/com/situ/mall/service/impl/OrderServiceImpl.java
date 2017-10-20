@@ -29,14 +29,14 @@ public class OrderServiceImpl implements IOrderService{
 	}
 
 	@Override
-	public List<OrderItem> findByUserId(Integer id) {
-		return orderDao.findByUserId(id);
-	}
-
-	@Override
 	public List<Order> findAll() {
 		// TODO Auto-generated method stub
 		return orderDao.findAll();
+	}
+
+	@Override
+	public List<Order> findByUserId(Integer id) {
+		return orderDao.findByUserId(id);
 	}
 
 	

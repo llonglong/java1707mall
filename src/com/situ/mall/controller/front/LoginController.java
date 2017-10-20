@@ -33,11 +33,15 @@ public class LoginController {
 		return "login";
 	}
 	
+	@RequestMapping("/getLoginPage.shtml")
+    public String getLoginPage() {
+       return "login_layer";
+    }
+
 	
 	@RequestMapping(value="/loginIndex.shtml")
 	@ResponseBody
-	public ServerResponse login(Model model, HttpServletRequest req, User user) {
-		
+	public ServerResponse login(Model model, HttpServletRequest req, User user) {	
 		User resultUser = loginService.getUser(user);
 		if (user != null && resultUser != null) {
 			if (user.getUsername().equals(resultUser.getUsername() ) && user.getPassword().equals(resultUser.getPassword())) {
@@ -49,8 +53,25 @@ public class LoginController {
 			}
 		} else {
 			return ServerResponse.createError("µÇÂ¼Ê§°Ü");
+	  }	
+	}
+	
+	@RequestMapping(value="/loginIndex2.shtml")
+	public String login2(Model model, HttpServletRequest req, User user) {
+		String path = null;
+		User resultUser = loginService.getUser(user);
+		if (user != null && resultUser != null) {
+			if (user.getUsername().equals(resultUser.getUsername()) && user.getPassword().equals(resultUser.getPassword())) {
+				HttpSession session = req.getSession();
+				session.setAttribute("user", user);
+				path =  "index";
+			} else {
+				path = "register";
+			}
+		} else {
+			path = "register";
 		}
-		
+		return path;
 	}
 	
 	@RequestMapping(value="toRegister.shtml")
@@ -74,9 +95,23 @@ public class LoginController {
 		if(user == null) {
 			return "login";
 		}
+		
 		else{
 			return "redirect:/order/prepareOrder.shtml";
 		}
 	}
 	
+	
+	@RequestMapping(value="loginOut.shtml")
+	@ResponseBody
+	public ServerResponse loginOut(HttpServletRequest request){
+		HttpSession session = request.getSession(false);
+		if (session != null) {
+			session.invalidate();
+		}
+		return ServerResponse.createSuccess("×¢Ïú³É¹¦");
+	}
+	
+
+
 }

@@ -43,4 +43,10 @@
 		select id,order_no,user_id,shipping_id,status,payment
 	    from orders
 	</select>
+	
+	<select id="findByUserId" parameterType="int" resultMap="orderMap">
+		select id,order_no,user_id,shipping_id,status,payment
+	    from orders where user_id = #{id}
+	</select>
+	
 </mapper>

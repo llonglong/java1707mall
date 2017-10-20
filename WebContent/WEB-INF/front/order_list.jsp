@@ -11,13 +11,110 @@
 	<meta name="Description" content="">
 	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
 	<meta name="renderer" content="webkit">
-	<title>支付方式-云购物商城</title>
+	<title>云购物商城-我的订单</title>
 	<link rel="shortcut icon" type="image/x-icon" href="img/icon/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="${ctx}/resources/front/css/base.css">
 	<link rel="stylesheet" type="text/css" href="${ctx}/resources/front/css/home.css">
+	<link rel="stylesheet" type="text/css" href="${ctx}/resources/front/css/member.css">
 	<script type="text/javascript" src="${ctx}/resources/front/js/jquery.js"></script>
 	<script type="text/javascript" src="${ctx}/resources/front/js/index.js"></script>
 	<script type="text/javascript" src="${ctx}/resources/front/js/modernizr-custom-v2.7.1.min.js"></script>
+	<script type="text/javascript" src="${ctx}/resources/front/js/jquery.SuperSlide.js"></script>
+	<script type="text/javascript">
+
+        var intDiff = parseInt(90000);//倒计时总秒数量
+
+        function timer(intDiff){
+            window.setInterval(function(){
+                var day=0,
+                    hour=0,
+                    minute=0,
+                    second=0;//时间默认值
+                if(intDiff > 0){
+                    day = Math.floor(intDiff / (60 * 60 * 24));
+                    hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+                    minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+                    second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+                }
+                if (minute <= 9) minute = '0' + minute;
+                if (second <= 9) second = '0' + second;
+                $('#day_show').html(day+"天");
+                $('#hour_show').html('<s id="h"></s>'+hour+'时');
+                $('#minute_show').html('<s></s>'+minute+'分');
+                $('#second_show').html('<s></s>'+second+'秒');
+                intDiff--;
+            }, 1000);
+        }
+
+        $(function(){
+            timer(intDiff);
+        });//倒计时结束
+
+        $(function(){
+	        /*======右按钮======*/
+            $(".you").click(function(){
+                nextscroll();
+            });
+            function nextscroll(){
+                var vcon = $(".v_cont");
+                var offset = ($(".v_cont li").width())*-1;
+                vcon.stop().animate({marginLeft:offset},"slow",function(){
+                    var firstItem = $(".v_cont ul li").first();
+                    vcon.find(".flder").append(firstItem);
+                    $(this).css("margin-left","0px");
+                });
+            };
+	        /*========左按钮=========*/
+            $(".zuo").click(function(){
+                var vcon = $(".v_cont");
+                var offset = ($(".v_cont li").width()*-1);
+                var lastItem = $(".v_cont ul li").last();
+                vcon.find(".flder").prepend(lastItem);
+                vcon.css("margin-left",offset);
+                vcon.animate({marginLeft:"0px"},"slow")
+            });
+        });
+
+	</script>
+	<script type="text/javascript">
+        $(document).ready(function(){
+            var $miaobian=$('.Xcontent08>div');
+            var $huantu=$('.Xcontent06>img');
+            var $miaobian1=$('.Xcontent26>div');
+            $miaobian.mousemove(function(){miaobian(this);});
+            $miaobian1.click(function(){miaobian1(this);});
+            function miaobian(thisMb){
+                for(var i=0; i<$miaobian.length; i++){
+                    $miaobian[i].style.borderColor = '#dedede';
+                }
+                thisMb.style.borderColor = '#cd2426';
+
+                $huantu[0].src = thisMb.children[0].src;
+            }
+            function miaobian1(thisMb1){
+                for(var i=0; i<$miaobian1.length; i++){
+                    $miaobian1[i].style.borderColor = '#dedede';
+                }
+//		thisMb.style.borderColor = '#cd2426';
+                $miaobian.css('border-color','#dedede');
+                thisMb1.style.borderColor = '#cd2426';
+                $huantu[0].src = thisMb1.children[0].src;
+            }
+            $(".Xcontent33").click(function(){
+                var value=parseInt($('.input').val())+1;
+                $('.input').val(value);
+            })
+
+            $(".Xcontent32").click(function(){
+                var num = $(".input").val()
+                if(num>0){
+                    $(".input").val(num-1);
+                }
+
+            })
+
+        })
+	</script>
 
 </head>
 <body>
@@ -85,6 +182,7 @@
 		<div class="fr pc-head-car">
 			<i class="icon-car"></i>
 			<a href="#">我的购物车</a>
+			<em>10</em>
 		</div>
 	</div>
 	<!--  顶部    start-->
@@ -106,86 +204,108 @@
 
 </header>
 
-<section id="pc-jie">
-	<div class="center ">
-		<ul class="pc-shopping-title clearfix">
-			<li><a href="#" class="cu">全部商品(10)</a></li>
-			<li><a href="#">限时优惠(7)</a></li>
-			<li><a href="#">库存紧张(0)</a></li>
-		</ul>
-	</div>
-	<div class="pc-shopping-cart center">
-		<div class="pc-shopping-tab">
-			<table>
-				<thead>
-					<tr class="tab-0">
-						<th class="tab-1"><input type="checkbox" name="s_all" class="s_all tr_checkmr" id="s_all_h"><label for=""> 全选</label></th>
-						<th class="tab-2">商品</th>
-						<th class="tab-3">商品信息</th>
-						<th class="tab-4">单价</th>
-						<th class="tab-5">数量</th>
-						<th class="tab-6">小计</th>
-						<th class="tab-7">操作</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td colspan="7" style="padding-left:10px; background:#eee">
-							<input type="checkbox" checked >
-							<label for="">云购物自营</label>
-							<a href="#" style="position:relative;padding-left:50px"><i class="icon-kefu"></i>联系客服</a>
-							<ul class="clearfix fr" style="padding-right:20px">
-								<li><i class="pc-shop-car-yun"></i>满109元减10</li>
-								<li><i class="pc-shop-car-yun"></i>领取3种优惠券, 最高省30元</li>
-							</ul>
-						</td>
-					</tr>
-					<c:forEach items="${list}" var="list">
-					<tr>
-						<th><input type="checkbox"  style="margin-left:10px; float:left"></th>
-						<th class="tab-th-1">
-							<a href="#"><img src="${list.productImage}" width="100%" alt=""></a>
-							<a href="#" class="tab-title">${list.productName}</a>
-						</th>
-						<th>
-							<p>颜色：黑色</p>
-							<p>规格：落地款</p>
-						</th>
-						<th>
-							<p>${list.currentUnitPrice}</p>
-						</th>
-						<th class="tab-th-2">
-							<span>-</span>
-							<input type="text" value="${list.quantity}" maxlength="3" placeholder="" class="shul">
-							<span>+</span>
-						</th>
-						<th class="red">￥ ${list.totalPrice}</th>
-						<th><a href="#">删除</a></th>
-					</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-
-		</div>
-	</div>
-	<div style="height:10px"></div>
-	<div class="center">
-		<div class="clearfix pc-shop-go">
-			<div class="fl pc-shop-fl">
-				<input type="checkbox" placeholder="">
-				<label for="">全选</label>
-				<a href="#">删除</a>
-				<a href="#">清楚失效商品</a>
+<div class="containers center"><div class="pc-nav-item"><a href="#">首页</a> &gt; <a href="#">会员中心 </a> &gt; <a href="#">商城快讯</a></div></div>
+<section id="member">
+	<div class="member-center clearfix">
+		<div class="member-left fl">
+			<div class="member-apart clearfix">
+				<div class="fl"><a href="#"><img src="img/mem.png"></a></div>
+				<div class="fl">
+					<p>用户名：</p>
+					<p><a href="#">亚里士多德</a></p>
+					<p>搜悦号：</p>
+					<p>389323080</p>
+				</div>
 			</div>
-			<div class="fr pc-shop-fr">
-				<p>共有 <em class="red pc-shop-shu"></em> 款商品，总计（不含运费）</p>
-				<span>￥ ${order.payment}</span>
-				<a href="#">去付款</a>
+			<div class="member-lists">
+				<dl>
+					<dt>我的商城</dt>
+					<dd class="cur"><a href="#">我的订单</a></dd>
+					<dd><a href="#">我的收藏</a></dd>
+					<dd><a href="#">账户安全</a></dd>
+					<dd><a href="#">我的评价</a></dd>
+					<dd><a href="#">地址管理</a></dd>
+				</dl>
+				<dl>
+					<dt>客户服务</dt>
+					<dd><a href="#">退货申请</a></dd>
+					<dd><a href="#">退货/退款记录</a></dd>
+				</dl>
+				<dl>
+					<dt>我的消息</dt>
+					<dd><a href="#">商城快讯</a></dd>
+					<dd><a href="#">帮助中心</a></dd>
+				</dl>
+			</div>
+		</div>
+		<div class="member-right fr">
+			<div class="member-head">
+				<div class="member-heels fl"><h2>我的订单</h2></div>
+				<div class="member-backs member-icons fr"><a href="#">搜索</a></div>
+				<div class="member-about fr"><input placeholder="商品名称/商品编号/订单编号" type="text"></div>
+			</div>
+			<div class="member-whole clearfix">
+				<ul id="H-table" class="H-table">
+					<li class="cur"><a href="#">我的订单</a></li>
+					<li><a href="#">待付款<em>(44)</em></a></li>
+					<li><a href="#">待发货</a></li>
+					<li><a href="#">待收货</a></li>
+					<li><a href="#">交易完成</a></li>
+					<li><a href="#">订单信息</a></li>
+				</ul>
+			</div>
+			<div class="member-border">
+				<div class="member-return H-over">
+					<div class="member-cancel clearfix">
+						<span class="be1">订单信息</span>
+						<span class="be2">收货人</span>
+						<span class="be2">订单金额</span>
+						<span class="be2">订单时间</span>
+						<span class="be2">订单状态</span>
+						<span class="be2">订单操作</span>
+					</div>
+					<div class="member-sheet clearfix">
+						<ul>
+							<li>
+								<div class="member-minute clearfix">
+									<span>2015-09-22 18:22:33</span>
+									<span>订单号：<em>${order.orderNo}</em></span>
+									<span><a href="#">以纯甲醇旗舰店</a></span>
+									<span class="member-custom">客服电话：<em>010-6544-0986</em></span>
+								</div>
+								<c:forEach items="${list}" var="orderItem">
+								<c:if test="${order.orderNo == orderItem.orderNo}">
+								<div class="member-circle clearfix">
+									<div class="ci1">
+										 <div class="ci7 clearfix">
+											<span class="gr1"><a href="#"><img src="${orderItem.productImage}" title="" width="60" height="60"></a></span>
+											<span class="gr2"><a href="#">${orderItem.productName}</a></span>
+											<span class="gr3">${orderItem.quantity}</span>
+										 </div>
+									</div>
+									<div class="ci2">${shipping.receiverName}</div>
+									<div class="ci3"><b>${orderItem.totalPrice}</b><p>货到付款</p><p class="iphone">手机订单</p></div>
+									<div class="ci4"><p>2015-09-22</p></div>
+									<div class="ci5"><p>等待付款</p> <p><a href="#">物流跟踪</a></p> <p><a href="#">订单详情</a></p></div>
+									<div class="ci5 ci8"><p>剩余15时20分</p> <p><a href="#" class="member-touch">立即支付</a> </p> <p><a href="#">取消订单</a> </p></div>
+								</div>									  
+								</c:if>
+							</c:forEach>
+							</li>
+						 </ul>
+					</div>
+				</div>
+				<div class="H-over member-over" style="display:none;"><h2>待发货</h2></div>
+				<div class="H-over member-over" style="display:none;"><h2>待收货</h2></div>
+				<div class="H-over member-over" style="display:none;"><h2>交易完成</h2></div>
+				<div class="H-over member-over" style="display:none;"><h2>订单信息</h2></div>
+
+				
+
 			</div>
 		</div>
 	</div>
 </section>
-
 
 
 <div style="height:100px"></div>
@@ -279,4 +399,4 @@
     })
 </script>
 </body>
-</html> 
+</html>

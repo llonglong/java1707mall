@@ -11,9 +11,9 @@ public interface IOrderService {
 
 	boolean addOrderItem(OrderItem orderItem);
 
-	List<OrderItem> findByUserId(Integer id);
-
 	List<Order> findAll();
+
+	List<Order> findByUserId(Integer id);
 
 
 }

@@ -12,25 +12,27 @@
 		<script type="text/javascript">
 			function login(){
 				layer.open({
-					type:2,//（iframe层）
+					type:2,
 					title:'用户登录',
 					area: ['500px', '400px'],
-					offset: '200px',//只定义top坐标，水平保持居中
-					content:"${ctx}/user/getLoginPage.shtml"
+					offset: '150px',
+					content:"${ctx}/login/getLoginPage.shtml"
 				});
 			}
-			
-			function login1(){
-				layer.open({
-					type:1,//（iframe层）
-					title:'用户登录',
-					area: ['700px', '450px'],
-					offset: '200px',//只定义top坐标，水平保持居中
-					content:$('#login')
-				});
-			}
-			
-			function submitForm() {
+			function loginout(){
+				var options = {
+						url:"${ctx}/login/loginOut.shtml",
+						dataType:"json",
+						
+						success:function(data){
+							if (data.status == 0){
+								window.parent.location.reload(); 
+							}
+						}
+					};
+				$.ajax(options);
+				}
+			/* function submitForm() {
 				var options = {
 						url:"${ctx}/login/loginIndex.shtml",
 						type:"post",
@@ -38,26 +40,27 @@
 						data:$("#login_form").serialize(),
 						success:function(data){
 							if(data.status == 0) {
-								parent.layer.msg(data.msg);
-								//当你在iframe页面关闭自身时
-								var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+								layer.msg(data.message);
+								var index = parent.layer.getFrameIndex(window.name); 
 								setTimeout(function(){
-									parent.layer.close(index); //再执行关闭  
-									window.parent.location.reload();//刷新父页面
+									parent.layer.close(index);
+									window.parent.location.reload();
 								},1000);
 							} else {
-								layer.msg(data.msg);
+								
+								layer.msg(data.message);
 							} 
 						}
 				};
 				$.ajax(options);
-			}
+			} */
 		</script>
 		<style type="text/css">
 			.login{
-				width:500px;
-				height:400px;
+				width:400px;
+				height:300px;
 				display:none;
+				margin: auto;
 			}
 		</style>
 	</head>
@@ -92,15 +95,15 @@
 				<div class="right">
 					<ul>
 						<c:if test="${empty user.username}">
-							<li><a  href="javascript:login1()"   target="_blank">请登录</a></li>
+							<li><a  href="javascript:login()"   target="_blank">请登录</a></li>
 							<li><a href="register.html" target="_blank">快速注册</a></li>
 						</c:if>
 						<c:if test="${!empty user.username}">
-							<li><a  href="javascript:login1()"   target="_blank">${user.username}</a></li>
-							<li><a href="register.html" target="_blank">注销</a></li>
+							<li><a  href="javascript:login()"   target="_blank">${user.username}</a></li>
+							<li><a href="javascript:loginout()" target="_blank" >注销</a></li>
 						</c:if>
 						<li><a class="collect" href="">我的收藏</a></li>
-						<li><a class="indent" href="">我的订单</a></li>
+						<li><a class="indent" href="${ctx}/order/findOrderByUserId.shtml">我的订单</a></li>
 						<li><a class="phone" href="">手机靓淘</a></li>
 						<li><a href="">我的积分</a></li>
 						<li><a href="">我的评价</a></li>
@@ -175,7 +178,7 @@
 							国际轻奢
 						</a>
 					</li>
-					<div class="clearfix"></div>
+					<div class="clearfix" ></div>
 				</ul>
 			</div>
 		</div>
@@ -192,7 +195,7 @@
 						<span>${category.name}</span>
 						<c:forEach items="${list}" var="all">
 							<c:if test="${category.id == all.parentId}">
-								<a href="${ctx}/product//product_list.shtml?id=100012">${all.name}</a>
+								<a href="${ctx}/product/product_list.shtml?id=${all.id}">${all.name}</a>
 							</c:if>
 						</c:forEach>
 					</c:forEach>
