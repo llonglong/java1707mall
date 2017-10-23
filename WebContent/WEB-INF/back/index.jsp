@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit">
 
-    <title> hAdmin- 主页</title>
+    <title>后台管理</title>
 
     <meta name="keywords" content="">
     <meta name="description" content="">
@@ -72,10 +72,10 @@
                                 <a class="J_menuItem" href="${ctx}/product/getTurn.action">添加商品</a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="graph_morris.html">Morris.js</a>
+                                <a class="J_menuItem" href="${ctx}/category/findParentCategory.action">父类商品列表</a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="graph_rickshaw.html">Rickshaw</a>
+                                <a class="J_menuItem" href="${ctx}/order/findAllOrder.action">Rickshaw</a>
                             </li>
                             <li>
                                 <a class="J_menuItem" href="graph_peity.html">Peity</a>
