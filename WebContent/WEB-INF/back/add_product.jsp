@@ -49,7 +49,7 @@
 		$("#Category option:gt(0)").remove();
 		$.ajax({
 			url:"${pageContext.request.contextPath}/category/categoryList.action",
-			dataTypr:"json",
+			dataType:"json",
 			data:"parentId="+parentId,
 			success:function (data,textStatus,ajax) {
 				/*  alert(ajax.responseText); */

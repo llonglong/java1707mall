@@ -9,35 +9,36 @@
 		<title>靓淘网_购物车</title>
 		<link rel="stylesheet" href="${ctx}/resources/front/css/cart_style.css" />
 		<script type="text/javascript">
-				function sub(parentId){
-					var num = $("#num" + parentId).val();
-					num--;
-					if(num == 0){
-						alert("确定清处该商品")
-						location.href="${ctx}/cart/deleteCart.shtml?productId="+parentId;
-						return;
-					}
-					location.href="${ctx}/cart/addCart.shtml?productId="+parentId+"&amount="+-1;
-				}
-				
-				function add(parentId,stock){
-					var num = $("#num" + parentId).val();
-					/* alert(stock); */
-					num++;
-					if(num > stock) {
-						alert("此商品只能买" + stock + "件");
-						return;
-					}
-					//赋值
-					//$("#num").val(num);
-					location.href="${ctx}/cart/addCart.shtml?productId="+parentId+"&amount="+1;
-				}
-				function del(parentId){
-					var num = $("#num").val();
+			function sub(parentId){
+				var num = $("#num" + parentId).val();
+				num--;
+				if(num == 0){
+					alert("确定清处该商品")
 					location.href="${ctx}/cart/deleteCart.shtml?productId="+parentId;
-					
+					return;
 				}
+				location.href="${ctx}/cart/addCart.shtml?productId="+parentId+"&amount="+-1;
+			}
 			
+			function add(parentId,stock){
+				var num = $("#num" + parentId).val();
+				/* alert(stock); */
+				num++;
+				if(num > stock) {
+					alert("此商品只能买" + stock + "件");
+					return;
+				}
+				//赋值
+				//$("#num").val(num);
+				location.href="${ctx}/cart/addCart.shtml?productId="+parentId+"&amount="+1;
+			}
+			
+			
+			function del(parentId){
+				var num = $("#num").val();
+				location.href="${ctx}/cart/deleteCart.shtml?productId="+parentId;
+				
+			}
 		</script>
 	</head>
 

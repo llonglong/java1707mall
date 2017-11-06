@@ -75,7 +75,7 @@
                                 <a class="J_menuItem" href="${ctx}/category/findParentCategory.action">父类商品列表</a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="${ctx}/order/findAllOrder.action">Rickshaw</a>
+                                <a class="J_menuItem" href="${ctx}/order/findAllOrder.action">订单管理</a>
                             </li>
                             <li>
                                 <a class="J_menuItem" href="graph_peity.html">Peity</a>

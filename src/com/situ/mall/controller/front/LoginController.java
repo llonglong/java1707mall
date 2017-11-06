@@ -2,11 +2,9 @@ package com.situ.mall.controller.front;
 
 import java.util.List;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.lang3.ObjectUtils.Null;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -59,20 +57,20 @@ public class LoginController {
 	
 	@RequestMapping(value="/loginIndex2.shtml")
 	public String login2(Model model, HttpServletRequest req, User user) {
-		String path = null;
+		/*String path = null;*/
 		User resultUser = loginService.getUser(user);
 		if (user != null && resultUser != null) {
 			if (user.getUsername().equals(resultUser.getUsername()) && user.getPassword().equals(resultUser.getPassword())) {
 				HttpSession session = req.getSession();
 				session.setAttribute("user", user);
-				path =  "index";
+				return "redirect:/cart/addCart.shtml";
 			} else {
-				path = "register";
+				return "register";
 			}
 		} else {
-			path = "register";
+			return "register";
 		}
-		return path;
+		
 	}
 	
 	@RequestMapping(value="toRegister.shtml")

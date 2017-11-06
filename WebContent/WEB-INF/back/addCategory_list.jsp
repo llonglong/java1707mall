@@ -12,56 +12,7 @@
 <%@include file="../common/header.jsp"%>
 <script type="text/javascript" src="${ctx}/resources/thirdlib/jquery/jquery.form.js"></script>
 </head>
-<!-- <script type="text/javascript">
-	function uploadPic(){
-	//定义参数
-	var options = {
-			url : "${pageContext.request.contextPath}/upload/uploadPic.action",
-			dataType : "json",
-			type : "post",
-			success : function(data) {
-				$("#imgId").attr("src", "/pic/" + data.fileName);
-				$("#mainImage").val(data.fileName);
-			}
-	};
-	 $("#form-add").ajaxSubmit(options);
- }
-	$(function () {
-		$.ajax({
-			url:"${pageContext.request.contextPath}/category/findParentCategory.action",
-			dataType:"json",
-			success:function (data,textStatus,ajax) {
-				var html = "<option>-- 请选择 --</option>"
-				for (var i = 0; i < data.length; i++) {
-					html += "<option value='"+data[i].id+"'>" + data[i].name + "</option>";
-				}
-				$("#ParentCategory").html(html);
-			}
-		});
-	});
-	function selectCategory (Obj) {
-		var parentId = $(Obj).val();
-		$("#Category option:gt(0)").remove();
-		$.ajax({
-			url:"${pageContext.request.contextPath}/category/findPCategory.action",
-			dataTypr:"json",
-			data:"parentId="+parentId,
-			success:function (data,textStatus,ajax) {
-				/*  alert(ajax.responseText); */
-				 
-				var html = "<option>-- 请选择 --</option>";
-				for (var i =0; i < data.length; i++) {
-					/* alert(i); */
-					html += "<option value='"+data[i].id+"'>" + data[i].name + "</option>";
-				}
-				$("#Category").html(html);
-			}
-		});
-	}
-
-</script> -->
 <body>
-
 	<!-- 顶部导航条 -->
 	<nav class="navbar navbar-default">
 	<div class="container">
