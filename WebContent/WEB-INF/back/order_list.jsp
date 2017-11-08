@@ -40,7 +40,7 @@
 		<form
 			action="${pageContext.request.contextPath}/product/deleteAll.action"
 			method="post" id="mainForm">
-			<input type="submit" value="批量删除" onclick="deleteAll" />
+			<!-- <input type="submit" value="批量删除" onclick="deleteAll" /> -->
 			<!-- <input type="submit" value="批量上架" onclick="updateAll"/> -->
 			<table class="table container">
 				<tr>
@@ -50,6 +50,7 @@
 					<td>用户id</td>
 					<!-- <td>总金额</td> -->
 					<td>订单详情</td>
+					<td>删除订单</td>
 				</tr>
 				<c:forEach items="${list}" var="order">
 					<tr>
@@ -59,6 +60,7 @@
 						<%-- <td>${order.payment}</td> --%>
 						<td><a
 							href="${ctx}/order/findOrderItemByOrderNO.action?orderNo=${order.orderNo}">订单详情</a></td>
+						<td><a href="${ctx}/order/deleteById.action?id=${order.id}">删除</a></td>
 					</tr>
 				</c:forEach>
 			</table>

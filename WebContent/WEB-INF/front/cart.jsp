@@ -3,25 +3,37 @@
 <%@include file="../common/head.jsp" %>
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="UTF-8">
 		<title>靓淘网_购物车</title>
 		<link rel="stylesheet" href="${ctx}/resources/front/css/cart_style.css" />
 		<script type="text/javascript">
-			function sub(parentId){
-				var num = $("#num" + parentId).val();
+			function sub(productId){
+				var num = $("#num" + productId).val();
 				num--;
 				if(num == 0){
 					alert("确定清处该商品")
-					location.href="${ctx}/cart/deleteCart.shtml?productId="+parentId;
+					location.href="${ctx}/cart/deleteCart.shtml?productId="+productId;
+					/* del(productId); */
 					return;
 				}
-				location.href="${ctx}/cart/addCart.shtml?productId="+parentId+"&amount="+-1;
+				location.href="${ctx}/cart/addCart.shtml?productId="+productId+"&amount="+-1;
+				/* $("#num"+productId).val(num)
+				$.post('${ctx}/cart/updateNum.shtml',
+						{"productId":productId,"amount":-1},
+						function (data) {
+							if (data.status==0) {
+								$("#num"+productId).val(num);
+								$("#priceId"+productId).html(data.data);
+								$("#"+productId).attr("checked","checked");
+								selectPro();
+							}
+						},"json"
+					); */
 			}
 			
-			function add(parentId,stock){
-				var num = $("#num" + parentId).val();
+			function add(productId,stock){
+				var num = $("#num" + productId).val();
 				/* alert(stock); */
 				num++;
 				if(num > stock) {
@@ -30,14 +42,11 @@
 				}
 				//赋值
 				//$("#num").val(num);
-				location.href="${ctx}/cart/addCart.shtml?productId="+parentId+"&amount="+1;
+				location.href="${ctx}/cart/addCart.shtml?productId="+productId+"&amount="+1;
 			}
-			
-			
-			function del(parentId){
+			function del(productId){
 				var num = $("#num").val();
-				location.href="${ctx}/cart/deleteCart.shtml?productId="+parentId;
-				
+				location.href="${ctx}/cart/deleteCart.shtml?productId="+productId;	
 			}
 		</script>
 	</head>
@@ -192,7 +201,8 @@
 						<input type="checkbox" />
 					</li>
 					<li style="margin-left: 8px;margin-right: 265px;">全选</li>
-					<li style="margin-left: 250px;margin-right: 18px;">总金额（已免运费）：<span style="color: #F41443;">¥${buyCartVO.totalPrice}</span></li>
+					<li style="margin-left: 250px;margin-right: 18px;">总金额（已免运费）：<span style="color: #F41443;">¥${buyCartVO.totalPrice}
+					</span></li>
 					<li class="total_right"><a href="${ctx}/login/judgeLogin.shtml">立即结算</a></li>
 				</ul>
 			</div>

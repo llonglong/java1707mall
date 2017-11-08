@@ -195,5 +195,11 @@ public class OrderController {
 		model.addAttribute("orderItemList",orderItemList);
 		return "orderItem_list";
 	}
+	
+	@RequestMapping("/deleteById")
+	public String deleteById(Integer id){
+		orderService.deleteById(id);
+		return "redirect:/order/findAllOrder.action";
+	}
 
 }

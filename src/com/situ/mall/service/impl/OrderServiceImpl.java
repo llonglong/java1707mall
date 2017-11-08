@@ -40,6 +40,11 @@ public class OrderServiceImpl implements IOrderService{
 		return orderDao.findByUserId(id);
 	}
 
+	@Override
+	public void deleteById(Integer id) {
+		orderDao.deleteById(id);
+	}
+
 	
 
 }

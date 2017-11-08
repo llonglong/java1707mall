@@ -49,4 +49,8 @@
 	    from orders where user_id = #{id}
 	</select>
 	
+	<delete id="deleteById" parameterType="int">
+		delete from orders where id=#{id}
+	</delete>
+	
 </mapper>

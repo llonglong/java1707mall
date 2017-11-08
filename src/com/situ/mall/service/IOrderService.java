@@ -15,5 +15,7 @@ public interface IOrderService {
 
 	List<Order> findByUserId(Integer id);
 
+	void deleteById(Integer id);
+
 
 }

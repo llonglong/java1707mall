@@ -78,10 +78,10 @@
                                 <a class="J_menuItem" href="${ctx}/order/findAllOrder.action">订单管理</a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="graph_peity.html">Peity</a>
+                                <a class="J_menuItem" href="${ctx}/category/getAddParentCategory.action">添加父类</a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="graph_sparkline.html">Sparkline</a>
+                                <a class="J_menuItem" href="${ctx}/category/getAddCategory.action">添加子类</a>
                             </li>
                             <li>
                                 <a class="J_menuItem" href="graph_metrics.html">图表组合</a>

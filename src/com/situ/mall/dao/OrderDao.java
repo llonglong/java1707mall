@@ -15,6 +15,8 @@ public interface OrderDao {
 
 	List<Order> findByUserId(Integer id);
 
+	void deleteById(Integer id);
+
 	
 
 }
